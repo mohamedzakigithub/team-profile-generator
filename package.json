@@ -1,0 +1,29 @@
+{
+  "name": "unit10hw",
+  "version": "1.0.0",
+  "description": "Team Profile Generator",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --verbose test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedzakigithub/team-profile-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mohamedzakigithub/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/mohamedzakigithub/team-profile-generatore",
+  "dependencies": {
+    "inquirer": "^6.3.1"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}
