@@ -20,7 +20,7 @@ const add = [
   },
 ];
 
-const EmployeeType = [
+const employeeType = [
   {
     type: "list",
     name: "choice",
@@ -97,21 +97,18 @@ const internInquiry = [
   },
 ];
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-inquirer.prompt(managerInquiry).then((answers) => {
-  const { name, id, email, phone } = answers;
-  const manager = new Manager(name, id, email, phone);
-  team.push(manager);
+inquirer.prompt(managerInquiry).then((manager) => {
+  const { name, id, email, phone } = manager;
+  const managerInstance = new Manager(name, id, email, phone);
+  team.push(managerInstance);
   addTeamMember();
 });
 
 async function addTeamMember() {
-  const addTeamMember = await inquirer.prompt(add);
-  if (addTeamMember.add) {
-    const Type = await inquirer.prompt(EmployeeType);
-    switch (Type.choice) {
+  const confirm = await inquirer.prompt(add);
+  if (confirm.add) {
+    const type = await inquirer.prompt(employeeType);
+    switch (type.choice) {
       case "Engineer":
         const engineer = await inquirer.prompt(engineerInquiry);
         addEngineer(engineer);
@@ -147,6 +144,8 @@ function createHtml(html) {
     console.log("The file has been saved!");
   });
 }
+// Write code to use inquirer to gather information about the development team members,
+// and to create objects for each team member (using the correct classes as blueprints!)
 
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
