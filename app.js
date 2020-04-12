@@ -12,6 +12,7 @@ const render = require("./lib/htmlRenderer");
 
 const team = [];
 
+// Define the add confirm inquirer array
 const add = [
   {
     type: "confirm",
@@ -20,6 +21,7 @@ const add = [
   },
 ];
 
+// Define the employee type inquirer questions array
 const employeeType = [
   {
     type: "list",
@@ -28,6 +30,8 @@ const employeeType = [
     choices: ["Engineer", "Intern"],
   },
 ];
+
+// Define the manager inquirer questions array
 const managerInquiry = [
   {
     type: "input",
@@ -51,6 +55,7 @@ const managerInquiry = [
   },
 ];
 
+// Define the engineer inquirer questions array
 const engineerInquiry = [
   {
     type: "input",
@@ -74,6 +79,7 @@ const engineerInquiry = [
   },
 ];
 
+// Define the intern inquirer questions array
 const internInquiry = [
   {
     type: "input",
@@ -97,6 +103,7 @@ const internInquiry = [
   },
 ];
 
+// Prompt for manager info
 inquirer.prompt(managerInquiry).then((manager) => {
   const { name, id, email, phone } = manager;
   const managerInstance = new Manager(name, id, email, phone);
@@ -104,6 +111,7 @@ inquirer.prompt(managerInquiry).then((manager) => {
   addTeamMember();
 });
 
+// Check for if new team member needs to be added and inquire to get member info.
 async function addTeamMember() {
   const confirm = await inquirer.prompt(add);
   if (confirm.add) {
@@ -124,6 +132,7 @@ async function addTeamMember() {
   }
 }
 
+// Function to generate new engineer class and add to team array
 function addEngineer(engineer) {
   const { name, id, email, github } = engineer;
   const engineerInstance = new Engineer(name, id, email, github);
@@ -131,6 +140,7 @@ function addEngineer(engineer) {
   addTeamMember();
 }
 
+// Function to generate new intern class and add to team array
 function addIntern(intern) {
   const { name, id, email, school } = intern;
   const internInstance = new Intern(name, id, email, school);
@@ -138,31 +148,10 @@ function addIntern(intern) {
   addTeamMember();
 }
 
+// Function to create html using the team array
 function createHtml(html) {
   fs.writeFile(outputPath, html, (err) => {
     if (err) throw err;
     console.log("The file has been saved!");
   });
 }
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work!```
