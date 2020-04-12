@@ -32,6 +32,7 @@ The app uses the following node modules.
 - fs
 - inquirer
 - path
+- jest
 
 In addition the app used the following classes as local modules.
 
@@ -39,7 +40,6 @@ In addition the app used the following classes as local modules.
 - Manager
 - Engineer
 - Intern
-- jest
 
 ## Tests
 
@@ -54,7 +54,7 @@ npm run test
 Here is the output of a test run
 
 ```sh
-> unit10hw@1.0.0 test C:\Users\Lenovo\Google Drive\Bootcamp\02-Homework and Class activities\10.OOP\Homework\Develop
+
 > jest --verbose test/*
 
  PASS  test/Engineer.test.js
